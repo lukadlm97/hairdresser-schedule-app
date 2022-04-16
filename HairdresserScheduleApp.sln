@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HairdresserScheduleApp", "HairdresserScheduleApp\HairdresserScheduleApp.csproj", "{5CCBA536-FCF5-4C30-B332-2C99B501D3BF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HairdresserScheduleApp.BusinessLogic", "HairdresserScheduleApp.BusinessLogic\HairdresserScheduleApp.BusinessLogic.csproj", "{619B8DB1-332B-4D96-8D7C-BFEF60293330}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CCBA536-FCF5-4C30-B332-2C99B501D3BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CCBA536-FCF5-4C30-B332-2C99B501D3BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CCBA536-FCF5-4C30-B332-2C99B501D3BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CCBA536-FCF5-4C30-B332-2C99B501D3BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{619B8DB1-332B-4D96-8D7C-BFEF60293330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{619B8DB1-332B-4D96-8D7C-BFEF60293330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{619B8DB1-332B-4D96-8D7C-BFEF60293330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{619B8DB1-332B-4D96-8D7C-BFEF60293330}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {69ECD52E-7A1D-4FAB-A5C4-5437865456AD}
+	EndGlobalSection
+EndGlobal
