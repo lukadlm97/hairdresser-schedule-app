@@ -18,30 +18,33 @@ namespace HairdresserScheduleApp.Controllers.V1
             this.logRequest = logRequest;
         }
 
-
-        [Authorize(Roles = HairdresserScheduleApp.BusinessLogic.Configurations.Constants.ROLE_ADMIN)]
+        
         [HttpGet("today")]
         public async Task<IActionResult> GetReservationsForToday()
         {
             this.logRequest.Message += $"Controllers.{nameof(ReservationController)}.{nameof(GetReservationsForToday)}->\n";
-            return Ok(await this.reservation.GetToday());
+            var timetableForToday = await this.reservation.GetToday();
+            if (timetableForToday == null)
+            {
+                return NotFound();
+            }
+            return Ok(timetableForToday);
         }
-        [Authorize(Roles = HairdresserScheduleApp.BusinessLogic.Configurations.Constants.ROLE_ADMIN)]
+
         [HttpGet("nextDays")]
         public async Task<IActionResult> GetReservationsForNextDays([FromBody]int noDays)
         {
             this.logRequest.Message += $"Controllers.{nameof(ReservationController)}.{nameof(GetReservationsForToday)}->\n";
             return Ok(await this.reservation.GetForNextDays(noDays));
         }
-
-        [Authorize(Roles = HairdresserScheduleApp.BusinessLogic.Configurations.Constants.ROLE_ADMIN)]
+        
         [HttpGet("all")]
         public async Task<IActionResult> GetAll()
         {
             this.logRequest.Message += $"Controllers.{nameof(ReservationController)}.{nameof(GetReservationsForToday)}->\n";
             return Ok(await this.reservation.GetAll());
         }
-        [Authorize(Roles = HairdresserScheduleApp.BusinessLogic.Configurations.Constants.ROLE_ADMIN)]
+
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] BusinessLogic.Models.DTOs.Input.ReservationInput reservationInput)
         {
@@ -53,8 +56,8 @@ namespace HairdresserScheduleApp.Controllers.V1
                 UserId = reservationInput.UserId
             }));
         }
-        [Authorize(Roles = HairdresserScheduleApp.BusinessLogic.Configurations.Constants.ROLE_ADMIN)]
-        [HttpDelete("delete/{scheduleItemId}")]
+
+        [HttpDelete("delete/{reservationId}")]
         public async Task<IActionResult> Delete(int reservationId)
         {
             this.logRequest.Message += $"Controllers.{nameof(DailyScheduleController)}.{nameof(Delete)}->\n";

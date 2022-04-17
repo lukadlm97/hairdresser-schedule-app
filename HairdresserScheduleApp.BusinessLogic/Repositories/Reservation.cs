@@ -96,6 +96,11 @@ namespace HairdresserScheduleApp.BusinessLogic.Repositories
                     throw new Exception();
                 }
 
+                if (await context.Reservations.AnyAsync(x => x.ScheduleItemId == newReservation.ScheduleItemId))
+                {
+                    throw new Exceptions.NotAvailableScheduleItemException("For selected schedule item reservation exist");
+                }
+
                 newReservation.User = user;
                 newReservation.ScheduleItem = scheduleItem;
                 await this.context.Reservations.AddAsync(newReservation);

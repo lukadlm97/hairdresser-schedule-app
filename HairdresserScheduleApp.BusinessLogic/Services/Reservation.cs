@@ -23,13 +23,18 @@ namespace HairdresserScheduleApp.BusinessLogic.Services
         public async Task<IQueryable<Models.Reservation>> GetToday()
         {
             var todaySchedule = await this.dailyScheduleUnitOfWork.DailySchedule.Get(DateTime.Now.Date);
+            if(todaySchedule==null) return null;
             var scheduleItems = 
                 await this.scheduleItemUnitOfWork.ScheduleItem.GetScheduleItems(todaySchedule.Id);
             List<Models.Reservation> reservations = new List<Models.Reservation>();
 
             foreach (var item in scheduleItems)
             {
-                reservations.AddRange(await this.reservationUnitOfWork.Reservation.GetAll(item.Id));
+                var fetchedReservations = await this.reservationUnitOfWork.Reservation.GetAll(item.Id);
+                if (fetchedReservations != null && fetchedReservations.Any())
+                {
+                    reservations.AddRange(fetchedReservations);
+                }
             }
 
             return reservations.AsQueryable();
