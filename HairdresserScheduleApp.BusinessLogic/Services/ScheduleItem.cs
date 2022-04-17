@@ -33,7 +33,7 @@ namespace HairdresserScheduleApp.BusinessLogic.Services
             return await this.scheduleItemUnitOfWork.ScheduleItem.GetScheduleItems(dailySchedule.Id);
         }
 
-        public async Task<bool> CreateScheduleItems(IEnumerable<Models.DTOs.Input.ScheduleItemInput> scheduleItems)
+        public async Task<IEnumerable<Models.ScheduleItem>> CreateScheduleItems(IEnumerable<Models.DTOs.Input.ScheduleItemInput> scheduleItems)
         {
             List<Models.ScheduleItem> listScheduleItems = new List<Models.ScheduleItem>();
             foreach (var item in scheduleItems)
@@ -46,7 +46,12 @@ namespace HairdresserScheduleApp.BusinessLogic.Services
             }
 
             await this.scheduleItemUnitOfWork.ScheduleItem.CreateScheduleItems(listScheduleItems);
-            return await this.scheduleItemUnitOfWork.Commit() != 0;
+            if (await this.scheduleItemUnitOfWork.Commit() != 0)
+            {
+                return listScheduleItems;
+            }
+
+            throw new Exception("Problem on insertion");
         }
 
         private int GetHours(string content)
@@ -89,7 +94,7 @@ namespace HairdresserScheduleApp.BusinessLogic.Services
     {
         Task<IQueryable<Models.ScheduleItem>> GetScheduleItems(int scheduleId);
         Task<IQueryable<Models.ScheduleItem>> GetScheduleItems(DateTime date);
-        Task<bool> CreateScheduleItems(IEnumerable<Models.DTOs.Input.ScheduleItemInput> scheduleItems);
+        Task<IEnumerable<Models.ScheduleItem>> CreateScheduleItems(IEnumerable<Models.DTOs.Input.ScheduleItemInput> scheduleItems);
         Task<bool> DeleteScheduleItem(int scheduleItemId);
         Task<bool> DeleteScheduleItems(int scheduleId);
     }

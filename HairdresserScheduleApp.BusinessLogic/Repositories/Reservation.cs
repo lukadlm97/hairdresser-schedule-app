@@ -35,6 +35,14 @@ namespace HairdresserScheduleApp.BusinessLogic.Repositories
             }, "GetAll DailySchedules");
         }
 
+        public Task<IEnumerable<Models.Reservation>> GetAllEnumerable(int scheduleItem)
+        {
+            return ExecuteInTryCatch<IEnumerable<Models.Reservation>>(async () =>
+            {
+                return this.context.Reservations.Where(x => x.ScheduleItemId == scheduleItem);
+            }, "GetAll DailySchedules");
+        }
+
         public Task<Models.Reservation> Get(int id)
         {
             return ExecuteInTryCatch<Models.Reservation>(async () =>
@@ -113,6 +121,7 @@ namespace HairdresserScheduleApp.BusinessLogic.Repositories
     {
         Task<IQueryable<Models.Reservation>> GetAll();
         Task<IQueryable<Models.Reservation>> GetAll(int scheduleItem);
+        Task<IEnumerable<Models.Reservation>> GetAllEnumerable(int scheduleItem);
 
         Task<Models.Reservation> Get(int id);
         

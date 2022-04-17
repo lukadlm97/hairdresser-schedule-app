@@ -107,10 +107,12 @@ builder.Services.AddScoped<HairdresserScheduleApp.BusinessLogic.UnitOfWorks.IUse
 builder.Services.AddScoped<HairdresserScheduleApp.BusinessLogic.Services.IJwtService, HairdresserScheduleApp.BusinessLogic.Services.JwtService>();
 builder.Services.AddScoped<HairdresserScheduleApp.BusinessLogic.Services.IDailySchedule, HairdresserScheduleApp.BusinessLogic.Services.DailySchedule>();
 builder.Services.AddScoped<HairdresserScheduleApp.BusinessLogic.Services.IScheduleItem, HairdresserScheduleApp.BusinessLogic.Services.ScheduleItem>();
+builder.Services.AddScoped<HairdresserScheduleApp.BusinessLogic.Services.IReservation, HairdresserScheduleApp.BusinessLogic.Services.Reservation>();
 builder.Services.AddScoped<HairdresserScheduleApp.BusinessLogic.Repositories.IDailySchedule, HairdresserScheduleApp.BusinessLogic.Repositories.DailySchedule>();
-builder.Services.AddScoped<HairdresserScheduleApp.BusinessLogic.Repositories.IScheduleItem, HairdresserScheduleApp.BusinessLogic.Repositories.ScheduleItem>();
+builder.Services.AddScoped<HairdresserScheduleApp.BusinessLogic.Repositories.IScheduleItem, HairdresserScheduleApp.BusinessLogic.Repositories.ScheduleItem>(); builder.Services.AddScoped<HairdresserScheduleApp.BusinessLogic.Repositories.IReservation, HairdresserScheduleApp.BusinessLogic.Repositories.Reservation>();
 builder.Services.AddScoped<HairdresserScheduleApp.BusinessLogic.UnitOfWorks.IDailyScheduleUnitOfWork, HairdresserScheduleApp.BusinessLogic.UnitOfWorks.DailyScheduleUoW>();
 builder.Services.AddScoped<HairdresserScheduleApp.BusinessLogic.UnitOfWorks.IScheduleItemUnitOfWork, HairdresserScheduleApp.BusinessLogic.UnitOfWorks.ScheduleItemUoW>();
+builder.Services.AddScoped<HairdresserScheduleApp.BusinessLogic.UnitOfWorks.IReservationUnitOfWork, HairdresserScheduleApp.BusinessLogic.UnitOfWorks.ReservationUoW>();
 builder.Services.AddScoped<HairdresserScheduleApp.BusinessLogic.Utilities.IMemoryStreamPool, HairdresserScheduleApp.BusinessLogic.Utilities.MemoryStreamPool>();
 builder.Services.AddScoped<HairdresserScheduleApp.BusinessLogic.Models.Logging.LogRequest>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

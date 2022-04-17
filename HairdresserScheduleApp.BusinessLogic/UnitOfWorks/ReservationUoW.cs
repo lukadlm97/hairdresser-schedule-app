@@ -2,7 +2,7 @@
 
 namespace HairdresserScheduleApp.BusinessLogic.UnitOfWorks
 {
-    internal class ReservationUoW : IReservationUnitOfWork
+    public class ReservationUoW : IReservationUnitOfWork
     {
         private readonly AppDbContext context;
 
